@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "121749583207",
+    "project_id": "thulir-54d94",
+    "storage_bucket": "thulir-54d94.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:121749583207:android:245c4ec30d50f264b02bc2",
+        "android_client_info": {
+          "package_name": "com.thewhitehats.thulir"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRYwcRXWwqtaNmwnvLTqThD-RcvS9Wfgg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
