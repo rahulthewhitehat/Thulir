@@ -304,7 +304,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                       },
                     ),
                     IconButton(
-                      icon: Icon(Icons.close, color: Colors.red),
+                      icon: const Icon(Icons.close, color: Colors.red),
                       onPressed: () async {
                         final reason = await _showReasonDialog(subjectCode);
                         if (reason != null) {

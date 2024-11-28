@@ -17,13 +17,13 @@ class SettingsScreen extends StatelessWidget {
           content: const Text('Are you sure you want to log out?'),
           actions: <Widget>[
             TextButton(
-              child: Text('No', style: TextStyle(color: Colors.green)),
+              child: const Text('No', style: TextStyle(color: Colors.green)),
               onPressed: () {
                 Navigator.of(context).pop(); // Close the dialog
               },
             ),
             TextButton(
-              child: Text('Yes', style: TextStyle(color: Colors.red)),
+              child: const Text('Yes', style: TextStyle(color: Colors.red)),
               onPressed: () async {
                 Navigator.of(context).pop(); // Close the dialog
                 await FirebaseAuth.instance.signOut();
@@ -40,7 +40,7 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Settings', style: TextStyle(color:Colors.white)),
+        title: const Text('Settings', style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.green.shade700,
       ),
       body: Padding(
@@ -100,9 +100,7 @@ class SettingsScreen extends StatelessWidget {
                 ),
                 trailing: const Icon(Icons.arrow_forward_ios, color: Colors.grey),
                 onTap: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text("About page coming soon!")),
-                  );
+                  Navigator.pushNamed(context, '/about');
                 },
               ),
             ),

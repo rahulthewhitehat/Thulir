@@ -87,7 +87,7 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
                   backgroundColor: Colors.green.shade700,
                   padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 12),
                 ),
-                child: const Text("Save Details", style: TextStyle(fontSize: 16)),
+                child: const Text("Save Details", style: TextStyle(fontSize: 16, color:Colors.white)),
               ),
             ),
           ],

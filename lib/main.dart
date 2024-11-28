@@ -7,7 +7,11 @@ import 'package:thulir/screens2/attendance_screen.dart';
 import 'package:thulir/screens2/configure_semester_screen.dart';
 import 'package:thulir/screens2/marks_details_screen.dart';
 import 'package:thulir/screens2/profile_view_edit_screen.dart';
+import 'package:thulir/screens3/about_screen.dart';
+import 'package:thulir/screens3/assignment_tracking_screen.dart';
+import 'package:thulir/screens3/event_management_screen.dart';
 import 'package:thulir/screens3/time_table_screen.dart';
+import 'package:thulir/screens3/visualisation_screen.dart';
 import 'screens1/login_screen.dart';
 import 'screens1/signup_screen.dart';
 import 'screens1/splash_screen.dart';
@@ -36,8 +40,8 @@ class ThulirApp extends StatelessWidget {
         '/login': (context) => LoginScreen(),
         '/signup': (context) => SignUpScreen(),
         '/userDetails': (context) => const UserDetailsScreen(),
-        '/dashboard': (context) => DashboardScreen(),
-        '/settings': (context) => SettingsScreen(),
+        '/dashboard': (context) => const DashboardScreen(),
+        '/settings': (context) => const SettingsScreen(),
         '/viewEditProfile': (context) => const ViewEditProfileScreen(),
         '/configureSemester': (context) => const ConfigureSemesterScreen(),
         '/addSubject': (context) => const AddSubjectScreen(
@@ -46,6 +50,10 @@ class ThulirApp extends StatelessWidget {
         '/attendance': (context) => const AttendanceScreen(),
         '/examGrades': (context) => const MarksScreen(),
         '/timetable': (context) => const TimetableScreen(),
+        '/assignments': (context) => const AssignmentTrackingScreen(),
+        '/events': (context) => const EventManagementScreen(),
+        '/visualize': (context) => const VisualizationScreen(),
+        '/about': (context) => AboutScreen()
 
       },
     );

@@ -119,17 +119,6 @@ class _TimetableScreenState extends State<TimetableScreen> {
   }
 
 
-  DateTime _extractTimeComponents(String timeString) {
-    final startTimeString = timeString.split(' - ')[0];
-    final format = DateFormat.jm(); // Format for parsing "9:50 AM", "10:50 AM", etc.
-
-    try {
-      return format.parse(startTimeString);
-    } catch (e) {
-      // If there's an error while parsing, return a default value.
-      return DateTime(0);
-    }
-  }
 
 
 
@@ -811,7 +800,7 @@ class _TimetableScreenState extends State<TimetableScreen> {
       final parsedDate = format.parse(timeStr);
       return TimeOfDay.fromDateTime(parsedDate);
     } catch (e) {
-      return TimeOfDay(hour: 0, minute: 0);
+      return const TimeOfDay(hour: 0, minute: 0);
     }
   }
 
@@ -859,7 +848,7 @@ class _TimetableScreenState extends State<TimetableScreen> {
         child: ListView(
           children: [
             Text(
-              "Today's Classes (${_currentDay})",
+              "Today's Classes ($_currentDay)",
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -883,10 +872,6 @@ class _TimetableScreenState extends State<TimetableScreen> {
         ),
       ),
     );
-  }
-  DateTime _timeOfDayToDateTime(TimeOfDay time) {
-    final now = DateTime.now();
-    return DateTime(now.year, now.month, now.day, time.hour, time.minute);
   }
 
 }
