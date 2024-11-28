@@ -11,21 +11,25 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
-  Future<String?> _fetchUserName(String userId) async {
+  String? _userName;
+  bool _isFemale = false;
+
+  Future<void> _fetchUserDetails(String userId) async {
     try {
       final userDoc = await FirebaseFirestore.instance.collection('user_info').doc(userId).get();
       if (userDoc.exists) {
-        return userDoc.data()?['name'];
+        setState(() {
+          _userName = userDoc.data()?['name'] ?? "User";
+          _isFemale = (userDoc.data()?['gender'] ?? "").toString().toLowerCase() == "female";
+        });
       }
     } catch (e) {
-      print("Error fetching user name: $e");
+      print("Error fetching user details: $e");
     }
-    return null;
   }
 
   Future<double> _fetchOverallAttendance(String userId) async {
     try {
-      // Get current semester
       final currentSemesterSnapshot = await FirebaseFirestore.instance
           .collection('user_info')
           .doc(userId)
@@ -37,7 +41,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
       if (currentSemesterSnapshot.docs.isNotEmpty) {
         final currentSemester = currentSemesterSnapshot.docs.first.id;
 
-        // Get attendance data
         final attendanceSnapshot = await FirebaseFirestore.instance
             .collection('user_info')
             .doc(userId)
@@ -50,7 +53,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
           double totalPercentage = 0.0;
           int subjectCount = 0;
 
-          // Calculate attendance percentage for each subject
           attendanceData.forEach((subjectCode, attendanceDetails) {
             int totalSessions = attendanceDetails.length;
             int presentSessions = attendanceDetails.values
@@ -76,7 +78,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   Future<double> _fetchCurrentCGPA(String userId) async {
     try {
-      // Get all semesters
       final semesterSnapshot = await FirebaseFirestore.instance
           .collection('user_info')
           .doc(userId)
@@ -88,7 +89,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
       double totalGpa = 0.0;
       int semesterCount = 0;
 
-      // Calculate the average GPA across all semesters
       for (var doc in semesterSnapshot.docs) {
         double? gpa = (doc.data()['gpa'] as double?) ?? 0.0;
         if (gpa > 0) {
@@ -101,6 +101,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
       print("Error fetching CGPA: $e");
     }
     return 0.0;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      _fetchUserDetails(user.uid);
+    }
   }
 
   void _refreshDashboard() {
@@ -146,140 +155,138 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ),
         ],
       ),
-      body: FutureBuilder<String?>(
-        future: _fetchUserName(user.uid),
+      body: FutureBuilder<List<double>>(
+        future: Future.wait([
+          _fetchOverallAttendance(user.uid),
+          _fetchCurrentCGPA(user.uid),
+        ]),
         builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
+          if (snapshot.connectionState == ConnectionState.waiting || _userName == null) {
             return const Center(child: CircularProgressIndicator());
           }
 
-          final userName = snapshot.data ?? "User";
+          final overallAttendance = snapshot.data?[0] ?? 0.0;
+          final currentCgpa = snapshot.data?[1] ?? 0.0;
 
-          return FutureBuilder<List<double>>(
-            future: Future.wait([
-              _fetchOverallAttendance(user.uid),
-              _fetchCurrentCGPA(user.uid),
-            ]),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(child: CircularProgressIndicator());
-              }
-
-              final overallAttendance = snapshot.data?[0] ?? 0.0;
-              final currentCgpa = snapshot.data?[1] ?? 0.0;
-
-              return Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+          return Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
                   children: [
-                    Row(
-                      children: [
-                        RandomAvatar(userName, height: 60, width: 60),
-                        const SizedBox(width: 16),
-                        Expanded(
-                          child: Text(
-                            "Welcome, $userName!",
-                            style: TextStyle(
-                              fontSize: 19,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.green.shade700,
-                            ),
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 40),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: _buildInfoCard(
-                            title: "Average Attendance",
-                            value: "${overallAttendance.toStringAsFixed(2)}%",
-                            icon: Icons.check_circle_outline,
-                          ),
-                        ),
-                        const SizedBox(width: 10),
-                        Expanded(
-                          child: _buildInfoCard(
-                            title: "Current CGPA",
-                            value: currentCgpa.toStringAsFixed(2),
-                            icon: Icons.school,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 30),
+                    RandomAvatar(_userName!, height: 60, width: 60),
+                    const SizedBox(width: 16),
                     Expanded(
-                      child: GridView.count(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 16,
-                        mainAxisSpacing: 16,
-                        children: [
-                          _buildDashboardButton(
-                            context,
-                            title: "Configure Semester",
-                            icon: Icons.settings,
-                            onTap: () {
-                              Navigator.pushNamed(context, '/configureSemester');
-                            },
-                          ),
-                          _buildDashboardButton(
-                            context,
-                            title: "Attendance Tracking",
-                            icon: Icons.check_circle,
-                            onTap: () {
-                              Navigator.pushNamed(context, '/attendance');
-                            },
-                          ),
-                          _buildDashboardButton(
-                            context,
-                            title: "Assignment Tracking",
-                            icon: Icons.assignment,
-                            onTap: () {
-                              Navigator.pushNamed(context, '/assignments');
-                            },
-                          ),
-                          _buildDashboardButton(
-                            context,
-                            title: "View Timetable",
-                            icon: Icons.schedule,
-                            onTap: () {
-                              Navigator.pushNamed(context, '/timetable');
-                            },
-                          ),
-                          _buildDashboardButton(
-                            context,
-                            title: "Event Management",
-                            icon: Icons.event,
-                            onTap: () {
-                              Navigator.pushNamed(context, '/events');
-                            },
-                          ),
-                          _buildDashboardButton(
-                            context,
-                            title: "View Marks/Grades",
-                            icon: Icons.school,
-                            onTap: () {
-                              Navigator.pushNamed(context, '/examGrades');
-                            },
-                          ),
-                          _buildDashboardButton(
-                            context,
-                            title: "Visualize Data",
-                            icon: Icons.graphic_eq_outlined,
-                            onTap: () {
-                              Navigator.pushNamed(context, '/visualize');
-                            },
-                          ),
-                        ],
+                      child: Text(
+                        "Welcome, $_userName!",
+                        style: TextStyle(
+                          fontSize: 19,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.green.shade700,
+                        ),
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                   ],
                 ),
-              );
-            },
+                const SizedBox(height: 40),
+                Row(
+                  children: [
+                    Expanded(
+                      child: _buildInfoCard(
+                        title: "Average Attendance",
+                        value: "${overallAttendance.toStringAsFixed(2)}%",
+                        icon: Icons.check_circle_outline,
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: _buildInfoCard(
+                        title: "Current CGPA",
+                        value: currentCgpa.toStringAsFixed(2),
+                        icon: Icons.school,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 30),
+                Expanded(
+                  child: GridView.count(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 16,
+                    mainAxisSpacing: 16,
+                    children: [
+                      _buildDashboardButton(
+                        context,
+                        title: "Configure Semester",
+                        icon: Icons.settings,
+                        onTap: () {
+                          Navigator.pushNamed(context, '/configureSemester');
+                        },
+                      ),
+                      _buildDashboardButton(
+                        context,
+                        title: "Attendance Tracking",
+                        icon: Icons.check_circle,
+                        onTap: () {
+                          Navigator.pushNamed(context, '/attendance');
+                        },
+                      ),
+                      _buildDashboardButton(
+                        context,
+                        title: "Assignment Tracking",
+                        icon: Icons.assignment,
+                        onTap: () {
+                          Navigator.pushNamed(context, '/assignments');
+                        },
+                      ),
+                      _buildDashboardButton(
+                        context,
+                        title: "View Timetable",
+                        icon: Icons.schedule,
+                        onTap: () {
+                          Navigator.pushNamed(context, '/timetable');
+                        },
+                      ),
+                      _buildDashboardButton(
+                        context,
+                        title: "Event Management",
+                        icon: Icons.event,
+                        onTap: () {
+                          Navigator.pushNamed(context, '/events');
+                        },
+                      ),
+                      _buildDashboardButton(
+                        context,
+                        title: "View Marks/Grades",
+                        icon: Icons.school,
+                        onTap: () {
+                          Navigator.pushNamed(context, '/examGrades');
+                        },
+                      ),
+                      _buildDashboardButton(
+                        context,
+                        title: "Visualize Data",
+                        icon: Icons.graphic_eq_outlined,
+                        onTap: () {
+                          Navigator.pushNamed(context, '/visualize');
+                        },
+                      ),
+                      if (_isFemale)
+                        _buildDashboardButton(
+                          context,
+                          title: "Period Tracking",
+                          icon: Icons.female,
+                          onTap: () {
+                            Navigator.pushNamed(context, '/periodTracking');
+                          },
+                        ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           );
         },
       ),

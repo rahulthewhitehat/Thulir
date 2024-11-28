@@ -10,6 +10,7 @@ import 'package:thulir/screens2/profile_view_edit_screen.dart';
 import 'package:thulir/screens3/about_screen.dart';
 import 'package:thulir/screens3/assignment_tracking_screen.dart';
 import 'package:thulir/screens3/event_management_screen.dart';
+import 'package:thulir/screens3/period_tracking_screen.dart';
 import 'package:thulir/screens3/time_table_screen.dart';
 import 'package:thulir/screens3/visualisation_screen.dart';
 import 'screens1/login_screen.dart';
@@ -53,7 +54,8 @@ class ThulirApp extends StatelessWidget {
         '/assignments': (context) => const AssignmentTrackingScreen(),
         '/events': (context) => const EventManagementScreen(),
         '/visualize': (context) => const VisualizationScreen(),
-        '/about': (context) => AboutScreen()
+        '/about': (context) => AboutScreen(),
+        '/periodTracking': (context) => const PeriodTrackingScreen(),
 
       },
     );
