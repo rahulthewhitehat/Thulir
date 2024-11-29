@@ -176,7 +176,7 @@ Below are some example screenshots of the **Thulir** app, giving you an idea of 
 
 For more information or support, please reach out via:
 
-- **Email**: [thulir.support@example.com](mailto:rahulbabuoffl@gmail.com)
+- **Email**: [rahulbabuoffl@gmail.com](mailto:rahulbabuoffl@gmail.com)
 - **Website**: [Thulir Official Website]
 - **GitHub Repository**: [GitHub](https://github.com/rahulthewhitehat/thulir)
 
