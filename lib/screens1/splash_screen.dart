@@ -65,43 +65,81 @@ class _SplashScreenState extends State<SplashScreen>
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.green.shade50,
-      body: Center(
-        child: FadeTransition(
-          opacity: _fadeAnimation,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset('assets/logo.png', height: 250),
-              const SizedBox(height: 20),
-              Text(
-                'Thulir',
-                style: TextStyle(
-                  fontSize: 36,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.green.shade700,
-                ),
+      body: Stack(
+        children: [
+          // Center content of the splash screen
+          Center(
+            child: FadeTransition(
+              opacity: _fadeAnimation,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset('assets/logo.png', height: 250),
+                  const SizedBox(height: 20),
+                  Text(
+                    'Thulir',
+                    style: TextStyle(
+                      fontSize: 36,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.green.shade700, // Matching app theme color
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    'Your One Stop College Companion!',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.green.shade600, // Matching app theme color
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                  const SizedBox(height: 40),
+                  CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(Colors.green.shade700),
+                  ),
+                ],
               ),
-              const SizedBox(height: 8),
-              Text(
-                'Your One Stop College Companion!',
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.green.shade600,
-                  fontStyle: FontStyle.italic,
-                ),
-              ),
-              const SizedBox(height: 40),
-              CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(Colors.green.shade700),
-              ),
-            ],
+            ),
           ),
-        ),
+          // Footer with heart and name
+          Positioned(
+            bottom: 16,
+            left: 0,
+            right: 0,
+            child: Center(
+              child: Row(
+                mainAxisSize: MainAxisSize.min, // Align the row in the center
+                children: [
+                  Text(
+                    'Made with ',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.green.shade700, // Matching app theme color
+                    ),
+                  ),
+                  Icon(
+                    Icons.favorite,
+                    color: Colors.red, // Heart icon in red
+                    size: 16,
+                  ),
+                  const SizedBox(width: 4), // Small space between heart and username
+                  Text(
+                    '@rahulthewhitehat',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.green.shade700, // Matching app theme color
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
