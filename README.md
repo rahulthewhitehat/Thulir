@@ -13,63 +13,63 @@ Thulir is a unified platform built using **Flutter** and **Firebase**, providing
 ## Features Overview
 
 ### 1. **User Profile Management**
-- Secure user authentication for a personalized experience.
-- Add and store personal information like name, contact details, and other relevant data.
-- Update details whenever necessary through a profile management screen.
+   - Secure user authentication for a personalized experience.
+   - Add and store personal information like name, contact details, and other relevant data.
+   - Update details whenever necessary through a profile management screen.
 
 ### 2. **Semester Configuration**
-- Configure the current semester's subjects, timetable, and faculty.
-- Add subject details like subject code, name, and type (Theory, Lab, Theory+Lab).
-- Manage semester-wise data easily in one place.
+   - Configure the current semester's subjects, timetable, and faculty.
+   - Add subject details like subject code, name, and type (Theory, Lab, Theory+Lab).
+   - Manage semester-wise data easily in one place.
 
 ### 3. **Attendance Tracking**
-- Track attendance for each subject in real-time.
-- Mark daily attendance for individual subjects, with options like Present, Absent, and On-Duty (OD).
-- View subject-wise attendance percentages and visualize overall attendance trends.
-- Alerts to warn students if attendance drops below a critical percentage (e.g., below 75%).
+   - Track attendance for each subject in real-time.
+   - Mark daily attendance for individual subjects, with options like Present, Absent, and On-Duty (OD).
+   - View subject-wise attendance percentages and visualize overall attendance trends.
+   - Alerts to warn students if attendance drops below a critical percentage (e.g., below 75%).
 
 ### 4. **Assignment Management**
-- Add, edit, and view assignments for the current semester.
-- Include assignment details like subject code, type (WrittenWork, SystemWork, etc.), submission type (GCR, Hardcopy, etc.), and deadlines.
-- Set reminders for upcoming assignment deadlines.
-- View assignment status and mark assignments as completed.
+   - Add, edit, and view assignments for the current semester.
+   - Include assignment details like subject code, type (WrittenWork, SystemWork, etc.), submission type (GCR, Hardcopy, etc.), and deadlines.
+   - Set reminders for upcoming assignment deadlines.
+   - View assignment status and mark assignments as completed.
 
 ### 5. **Timetable Management**
-- View and edit your semester timetable with subject names and timings.
-- Configure both regular class schedules and exam timetables.
+   - View and edit your semester timetable with subject names and timings.
+   - Configure both regular class schedules and exam timetables.
 
 ### 6. **Event Management**
-- Track and manage events like hackathons, symposiums, inter-college competitions, and club activities.
-- Add event details such as event name, college name, event date, registration deadline, and links for event registration.
-- Rate events based on importance to help prioritize participation.
+   - Track and manage events like hackathons, symposiums, inter-college competitions, and club activities.
+   - Add event details such as event name, college name, event date, registration deadline, and links for event registration.
+   - Rate events based on importance to help prioritize participation.
 
 ### 7. **Exam and Grade Tracking**
-- View and manage marks for CAT exams (CAT1, CAT2, CAT3) and End Semester Exams.
-- Track GPA for each semester and view cumulative CGPA.
-- Visualize GPA progression over time with graphs to assess academic growth.
+   - View and manage marks for CAT exams (CAT1, CAT2, CAT3) and End Semester Exams.
+   - Track GPA for each semester and view cumulative CGPA.
+   - Visualize GPA progression over time with graphs to assess academic growth.
 
 ### 8. **Visualizations and Data Insights**
-- **Overall Attendance Progress**: Line chart showing attendance percentages for each subject over time.
-- **Subject-wise Attendance Percentage**: Pie chart visualizing the attendance distribution across subjects.
-- **GPA Progression**: Line chart showing the progression of GPA across semesters to visualize performance trends.
-- **Period Tracking (Female students only)**: Predict the date of the next cycle based on past data and visualize period history.
+   - **Overall Attendance Progress**: Line chart showing attendance percentages for each subject over time.
+   - **Subject-wise Attendance Percentage**: Pie chart visualizing the attendance distribution across subjects.
+   - **GPA Progression**: Line chart showing the progression of GPA across semesters to visualize performance trends.
+   - **Period Tracking (Female students only)**: Predict the date of the next cycle based on past data and visualize period history.
 
 ### 9. **Period Tracking (Female Users)**
-- Track menstrual cycles, including start and end dates.
-- Predict the next period based on average cycle length.
-- Record symptoms experienced during the cycle and visualize the average cycle trend.
-- Privacy-focused: this feature is only visible to female users.
+   - Track menstrual cycles, including start and end dates.
+   - Predict the next period based on average cycle length.
+   - Record symptoms experienced during the cycle and visualize the average cycle trend.
+   - Privacy-focused: this feature is only visible to female users.
 
 ### 10. **Dashboard and Visualization**
-- Overview of attendance percentage, CGPA, and other key metrics.
-- Quick access to important features like attendance, assignments, events, etc.
-- Visualize academic data to assess strengths, identify areas for improvement, and optimize performance.
+   - Overview of attendance percentage, CGPA, and other key metrics.
+   - Quick access to important features like attendance, assignments, events, etc.
+   - Visualize academic data to assess strengths, identify areas for improvement, and optimize performance.
 
 ### 11. **Settings and Customization**
-- Edit profile information, including contact and academic details.
-- Toggle notification preferences.
-- A settings screen for logout, about, and access to personalization options.
-- "About" section for more information about the app and developer.
+   - Edit profile information, including contact and academic details.
+   - Toggle notification preferences.
+   - A settings screen for logout, about, and access to personalization options.
+   - "About" section for more information about the app and developer.
 
 ---
 
@@ -88,12 +88,12 @@ To use Thulir's backend features, you need to set up **Firebase**:
 
 1. **Create a Project**: Start by creating a new project in the [Firebase Console](https://console.firebase.google.com/).
 2. **Configure Firebase**:
-    - **Android**: Download and add the `google-services.json` file to the Android project directory.
-    - **iOS**: Download and add the `GoogleService-Info.plist` file to the iOS project directory.
-    - Follow the Firebase setup guide to integrate Firebase SDK into your Flutter project.
+   - **Android**: Download and add the `google-services.json` file to the Android project directory.
+   - **iOS**: Download and add the `GoogleService-Info.plist` file to the iOS project directory.
+   - Follow the Firebase setup guide to integrate Firebase SDK into your Flutter project.
 3. **Add Firestore and Authentication**:
-    - Enable **Firestore** for storing app data.
-    - Enable **Firebase Authentication** for managing user sign-up, login, and account security.
+   - Enable **Firestore** for storing app data.
+   - Enable **Firebase Authentication** for managing user sign-up, login, and account security.
 
 ---
 
@@ -103,35 +103,33 @@ To use Thulir's backend features, you need to set up **Firebase**:
 
 Below are some example screenshots of the **Thulir** app, giving you an idea of the user interface and functionality:
 
-1. **Dashboard Screen**  
-   ![Dashboard Screenshot](https://example.com/dashboard-screenshot.png)
+1. **Dashboard Screens & Attendance Screen**  
+<div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+   <img src="./screenshots/dashboard1.png" width="30%" style="border: 2px solid #ddd; padding: 5px;">
+   <img src="./screenshots/dashboard2.png" width="30%" style="border: 2px solid #ddd; padding: 5px;">
+   <img src="./screenshots/attendance.png" width="30%" style="border: 2px solid #ddd; padding: 5px;">
+</div>
 
-2. **Attendance Tracking**  
-   ![Attendance Screenshot](https://example.com/attendance-screenshot.png)
+2. **View Marks, Event Management & Time Table Schedules**  
+<div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+   <img src="./screenshots/viewaddmarks.png" width="30%" style="border: 2px solid #ddd; padding: 5px;">
+   <img src="./screenshots/event_management.png" width="30%" style="border: 2px solid #ddd; padding: 5px;">
+   <img src="./screenshots/exam_schedule.png" width="30%" style="border: 2px solid #ddd; padding: 5px;">
+</div>
 
-3. **Assignment Management**  
-   ![Assignment Screenshot](https://example.com/assignment-screenshot.png)
+3. **Period Tracking, Visualations, Configuring Semesters**  
+<div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+   <img src="./screenshots/period_tracking.png" width="30%" style="border: 2px solid #ddd; padding: 5px;">
+   <img src="./screenshots/visuals.png" width="30%" style="border: 2px solid #ddd; padding: 5px;">
+   <img src="./screenshots/config_sem.png" width="30%" style="border: 2px solid #ddd; padding: 5px;">
+</div>
 
-4. **Event Management**  
-   ![Event Screenshot](https://example.com/event-screenshot.png)
+4. **Editing Profile & Settings**  
+<div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+   <img src="./screenshots/view_profile.png" width="30%" style="border: 2px solid #ddd; padding: 5px;">
+   <img src="./screenshots/settings.png" width="30%" style="border: 2px solid #ddd; padding: 5px;">
+</div>
 
-5. **Timetable Management**  
-   ![Timetable Screenshot](https://example.com/timetable-screenshot.png)
-
-6. **Period Tracking**  
-   ![Period Tracking Screenshot](https://example.com/period-tracking-screenshot.png)
-
-7. **GPA Progression Visualization**  
-   ![GPA Progression Screenshot](https://example.com/gpa-progression-screenshot.png)
-
-8. **Subject-wise Attendance Pie Chart**  
-   ![Attendance Pie Chart Screenshot](https://example.com/attendance-pie-chart.png)
-
-9. **Add Assignment Dialog**  
-   ![Add Assignment Dialog Screenshot](https://example.com/add-assignment-dialog-screenshot.png)
-
-10. **Settings Screen**  
-    ![Settings Screenshot](https://example.com/settings-screenshot.png)
 
 ---
 
@@ -176,10 +174,12 @@ Below are some example screenshots of the **Thulir** app, giving you an idea of 
 
 For more information or support, please reach out via:
 
-- **Email**: [thulir.support@example.com](mailto:rahulbabuoffl@gmail.com)
+- **Email**: [rahulbabuoffl@gmail.com](mailto:rahulbabuoffl@gmail.com)
 - **Website**: [Thulir Official Website]
 - **GitHub Repository**: [GitHub](https://github.com/rahulthewhitehat/thulir)
 
 We believe that **Thulir** can make a significant impact on a student's academic journey, enabling them to focus on what matters most—**learning and growing**.
 
 **Thulir - A Companion for College Students** 🌱
+
+
