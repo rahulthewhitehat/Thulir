@@ -103,35 +103,33 @@ To use Thulir's backend features, you need to set up **Firebase**:
 
 Below are some example screenshots of the **Thulir** app, giving you an idea of the user interface and functionality:
 
-1. **Dashboard Screen**  
-   ![Dashboard Screenshot](https://example.com/dashboard-screenshot.png)
+1. **Dashboard Screens & Attendance Screen**  
+<div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+   <img src="./screenshots/dashboard1.png" width="30%" style="border: 2px solid #ddd; padding: 5px;">
+   <img src="./screenshots/dashboard2.png" width="30%" style="border: 2px solid #ddd; padding: 5px;">
+   <img src="./screenshots/attendance.png" width="30%" style="border: 2px solid #ddd; padding: 5px;">
+</div>
 
-2. **Attendance Tracking**  
-   ![Attendance Screenshot](https://example.com/attendance-screenshot.png)
+2. **View Marks, Event Management & Time Table Schedules**  
+<div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+   <img src="./screenshots/viewaddmarks.png" width="30%" style="border: 2px solid #ddd; padding: 5px;">
+   <img src="./screenshots/event_management.png" width="30%" style="border: 2px solid #ddd; padding: 5px;">
+   <img src="./screenshots/exam_schedule.png" width="30%" style="border: 2px solid #ddd; padding: 5px;">
+</div>
 
-3. **Assignment Management**  
-   ![Assignment Screenshot](https://example.com/assignment-screenshot.png)
+3. **Period Tracking, Visualations, Configuring Semesters**  
+<div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+   <img src="./screenshots/period_tracking.png" width="30%" style="border: 2px solid #ddd; padding: 5px;">
+   <img src="./screenshots/visuals.png" width="30%" style="border: 2px solid #ddd; padding: 5px;">
+   <img src="./screenshots/config_sem.png" width="30%" style="border: 2px solid #ddd; padding: 5px;">
+</div>
 
-4. **Event Management**  
-   ![Event Screenshot](https://example.com/event-screenshot.png)
+4. **Editing Profile & Settings**  
+<div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+   <img src="./screenshots/view_profile.png" width="30%" style="border: 2px solid #ddd; padding: 5px;">
+   <img src="./screenshots/settings.png" width="30%" style="border: 2px solid #ddd; padding: 5px;">
+</div>
 
-5. **Timetable Management**  
-   ![Timetable Screenshot](https://example.com/timetable-screenshot.png)
-
-6. **Period Tracking**  
-   ![Period Tracking Screenshot](https://example.com/period-tracking-screenshot.png)
-
-7. **GPA Progression Visualization**  
-   ![GPA Progression Screenshot](https://example.com/gpa-progression-screenshot.png)
-
-8. **Subject-wise Attendance Pie Chart**  
-   ![Attendance Pie Chart Screenshot](https://example.com/attendance-pie-chart.png)
-
-9. **Add Assignment Dialog**  
-   ![Add Assignment Dialog Screenshot](https://example.com/add-assignment-dialog-screenshot.png)
-
-10. **Settings Screen**  
-    ![Settings Screenshot](https://example.com/settings-screenshot.png)
 
 ---
 
