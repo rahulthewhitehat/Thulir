@@ -1,3 +1,10 @@
+/* © **2024** [Rahul Babu M P](https://linktr.ee/rahulthewhitehat)
+All Rights Reserved.
+This file is part of the Thulir project and contains proprietary and
+confidential information. Unauthorized copying, distribution, or use
+of this file, via any medium, is strictly prohibited.
+Proprietary information should not be shared without prior written permission. */
+
 # Thulir - Your College Companion App
 
 **Thulir** is a college companion app designed specifically for students to manage, track, and visualize both academic and non-academic activities effectively. Thulir aims to streamline the complexities of college life by providing one integrated platform to store and access all essential student information.
